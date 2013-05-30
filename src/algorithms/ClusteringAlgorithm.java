@@ -1,8 +1,16 @@
 package algorithms;
+
 import structures.Clusters;
 import structures.Points;
 
 abstract public class ClusteringAlgorithm
 {
-	abstract public Clusters getClusters(Points points);
+	protected Points input;
+
+	public ClusteringAlgorithm(Points input)
+	{
+		this.input = input;
+	}
+
+	abstract public Clusters getClusters();
 }

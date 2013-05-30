@@ -1,19 +1,30 @@
 package structures;
+
 import java.util.ArrayList;
 import java.util.Collection;
 
-public class Clusters
+public class Clusters extends ArrayList<Points>
 {
-	private final Collection<Points> clusters = new ArrayList<Points>();
-	
-	public void add(Points cluster)
+	private static final long serialVersionUID = 1L;
+
+	public Clusters()
 	{
-		clusters.add(cluster);
+	}
+
+	public Clusters(Collection<Points> values)
+	{
+		super(values);
 	}
 
 	@Override
 	public String toString()
 	{
-		return clusters.toString();
+		final StringBuilder sb = new StringBuilder();
+		for (final Points cluster : this)
+		{
+			sb.append(cluster.size());
+			sb.append(" ");
+		}
+		return sb.toString();
 	}
 }

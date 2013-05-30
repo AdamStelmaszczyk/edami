@@ -1,19 +1,18 @@
 package structures;
+
 import java.util.ArrayList;
 import java.util.Collection;
 
-public class Points
+public class Points extends ArrayList<Point>
 {
-	private final Collection<Point> points = new ArrayList<Point>();
+	private static final long serialVersionUID = 1L;
 
-	public void add(Point point)
+	public Points()
 	{
-		points.add(point);
 	}
 
-	@Override
-	public String toString()
+	public Points(Collection<Point> values)
 	{
-		return points.toString();
+		super(values);
 	}
 }

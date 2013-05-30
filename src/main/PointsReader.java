@@ -1,4 +1,5 @@
 package main;
+
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStream;
@@ -17,12 +18,15 @@ public class PointsReader
 		String line;
 		while ((line = reader.readLine()) != null)
 		{
-			final Point point = new Point();
 			final StringTokenizer tokenizer = new StringTokenizer(line);
-			while (tokenizer.hasMoreTokens())
+			final int numberOfParams = tokenizer.countTokens() - 1;
+			final double params[] = new double[numberOfParams];
+			for (int i = 0; i < numberOfParams; i++)
 			{
-				point.add(Double.parseDouble(tokenizer.nextToken()));
+				params[i] = Double.parseDouble(tokenizer.nextToken());
 			}
+			final int classId = Integer.parseInt(tokenizer.nextToken());
+			final Point point = new Point(params, classId);
 			points.add(point);
 		}
 		return points;

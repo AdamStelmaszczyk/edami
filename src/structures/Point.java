@@ -1,19 +1,38 @@
 package structures;
-import java.util.ArrayList;
-import java.util.Collection;
+
+import java.util.Arrays;
 
 public class Point
 {
-	private Collection<Double> parameters = new ArrayList<Double>();
+	public final double[] params;
+	public final int clusterId;
 
-	public void add(double parameter)
+	public Point(double[] params, int clusterId)
 	{
-		parameters.add(parameter);
+		this.params = new double[params.length];
+		System.arraycopy(params, 0, this.params, 0, params.length);
+		this.clusterId = clusterId;
+	}
+
+	public double distanceTo(Point point)
+	{
+		final int dimension = params.length;
+		if (dimension != point.params.length)
+		{
+			throw new IllegalArgumentException("Given point is in different dimension");
+		}
+		double sum = 0.0;
+		for (int i = 0; i < dimension; i++)
+		{
+			final double diff = params[i] - point.params[i];
+			sum += diff * diff;
+		}
+		return Math.sqrt(sum);
 	}
 
 	@Override
 	public String toString()
 	{
-		return parameters.toString();
+		return Arrays.toString(params);
 	}
 }
