@@ -40,10 +40,9 @@ public class Main
 		}
 		final Clusters clusters = algorithm.getClusters();
 		final Scorer scorer = new Scorer(input, clusters);
-		System.out.println(clusters.size() + " clusters of size:\t" + clusters);
-		System.out.println("Quality of groups num:\t" + scorer.qualityOfGroupsNumber);
-		System.out.println("Similarity quality:\t" + scorer.similarityQuality);
-		System.out.println("Discriminate quality:\t" + scorer.discriminateQuality);
-		System.out.println("General quality:\t" + scorer.generalQuality);
+		System.out.println(clusters.size() + " cluster(s) of size: " + clusters);
+		System.out.println("True positives: " + scorer.truePositives);
+		System.out.println("True negatives: " + scorer.trueNegatives);
+		System.out.println("Rand index: " + scorer.randIndex);
 	}
 }

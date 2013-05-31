@@ -1,37 +1,27 @@
 package scorer;
 
-import java.util.HashMap;
-import java.util.Map;
-
 import structures.Clusters;
 import structures.Point;
 import structures.Points;
 
 public class Scorer
 {
-	public final double qualityOfGroupsNumber;
-	public final double similarityQuality;
-	public final double discriminateQuality;
-	public final double generalQuality;
+	public final double randIndex;
+	public final int truePositives;
+	public final int trueNegatives;
 
 	public Scorer(Points input, Clusters clusters)
 	{
-		final Clusters perfectClusters = getPerfectClusters(input);
 		final int allPairs = getNumberOfAllPairs(input.size());
-		final int A = getNumberOfPairsInOneCluster(perfectClusters);
-		final int B = allPairs - A;
-		final int a = getNumberOfPairsInOneCluster(clusters);
-		final int b = allPairs - a;
-		qualityOfGroupsNumber = (double) clusters.size() / perfectClusters.size();
-		similarityQuality = (double) a / A;
-		discriminateQuality = (double) b / B;
-		generalQuality = Math.sqrt(similarityQuality * discriminateQuality);
+		truePositives = getNumberOfTruePositives(clusters);
+		trueNegatives = getNumberOfTrueNegatives(clusters);
+		randIndex = (double) (truePositives + trueNegatives) / allPairs;
 	}
 
-	private static int getNumberOfPairsInOneCluster(Clusters clusters)
+	private static int getNumberOfTruePositives(Clusters clusters)
 	{
-		int pairs = 0;
-		for (final Points cluster : clusters)
+		int result = 0;
+		for (Points cluster : clusters)
 		{
 			for (int i = 0; i < cluster.size(); i++)
 			{
@@ -39,36 +29,38 @@ public class Scorer
 				{
 					if (cluster.get(i).clusterId == cluster.get(j).clusterId)
 					{
-						pairs++;
+						result++;
 					}
 				}
 			}
 		}
-		return pairs;
+		return result;
+	}
+
+	private static int getNumberOfTrueNegatives(Clusters clusters)
+	{
+		int result = 0;
+		for (int i = 0; i < clusters.size(); i++)
+		{
+			for (Point p : clusters.get(i))
+			{
+				for (int j = i + 1; j < clusters.size(); j++)
+				{
+					for (Point p2 : clusters.get(j))
+					{
+						if (p.clusterId != p2.clusterId)
+						{
+							result++;
+						}
+					}
+				}
+			}
+		}
+		return result;
 	}
 
 	private static int getNumberOfAllPairs(int n)
 	{
 		return (n * (n - 1)) / 2;
-	}
-
-	private static Clusters getPerfectClusters(Points input)
-	{
-		final Map<Integer, Points> clusterIdToCluster = new HashMap<Integer, Points>();
-		for (final Point p : input)
-		{
-			Points cluster = clusterIdToCluster.get(p.clusterId);
-			if (cluster == null)
-			{
-				cluster = new Points();
-				cluster.add(p);
-				clusterIdToCluster.put(p.clusterId, cluster);
-			}
-			else
-			{
-				cluster.add(p);
-			}
-		}
-		return new Clusters(clusterIdToCluster.values());
 	}
 }
