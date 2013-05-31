@@ -18,8 +18,8 @@ public class Dbscan extends ClusteringAlgorithm
 	public Dbscan(Points input, double eps, int minPts)
 	{
 		super(input);
-		this.EPS = eps;
-		this.MIN_PTS = minPts;
+		EPS = eps;
+		MIN_PTS = minPts;
 	}
 
 	@Override
@@ -78,5 +78,11 @@ public class Dbscan extends ClusteringAlgorithm
 			}
 		}
 		return neighborhood;
+	}
+
+	@Override
+	public String toString()
+	{
+		return "DBSCAN";
 	}
 }

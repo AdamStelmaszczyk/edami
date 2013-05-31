@@ -20,6 +20,8 @@ public class Clusters extends ArrayList<Points>
 	public String toString()
 	{
 		final StringBuilder sb = new StringBuilder();
+		sb.append(size());
+		sb.append(" cluster(s) of size: ");
 		for (final Points cluster : this)
 		{
 			sb.append(cluster.size());

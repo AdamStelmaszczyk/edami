@@ -18,4 +18,10 @@ public class Denclue extends ClusteringAlgorithm
 		clusters.add(input);
 		return clusters;
 	}
+
+	@Override
+	public String toString()
+	{
+		return "DENCLUE";
+	}
 }

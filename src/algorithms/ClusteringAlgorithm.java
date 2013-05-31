@@ -13,4 +13,7 @@ abstract public class ClusteringAlgorithm
 	}
 
 	abstract public Clusters getClusters();
+
+	@Override
+	abstract public String toString();
 }
