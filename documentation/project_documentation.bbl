@@ -1,0 +1,16 @@
+\begin{thebibliography}{1}
+
+\bibitem{dbscan}
+Martin Ester, Hans-Peter Kriegel, Jorg Sander, and Xianowei Xu.
+\newblock A density-based algorithm for discovering clusters in large spatial
+  databases with noise.
+\newblock {\em Proceedings of the Second International Conference on Knowledge
+  Discovery and Data Mining}, (KDD-96), 1996.
+
+\bibitem{denclue}
+Alexander Hinneburg and Daniel~A. Keimm.
+\newblock An efficient approach to clustering in large multimedia databases
+  with noise.
+\newblock 1998.
+
+\end{thebibliography}
