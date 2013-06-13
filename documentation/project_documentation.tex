@@ -1,0 +1,118 @@
+\documentclass[12pt, a4paper, notitlepage, oneside]{article}
+\usepackage[english]{babel}
+\usepackage[utf8]{inputenc} 
+\usepackage{graphicx}
+\usepackage{enumerate}
+\usepackage{setspace}
+%\singlespacing
+
+\makeatletter
+
+\newcommand{\linia}{\rule{\linewidth}{0.4mm}}
+
+\renewcommand{\maketitle}{
+\begin{titlepage}
+
+    \vspace*{1cm}
+
+    \begin{center}\small
+
+    Warsaw University of Technology\\
+    The Faculty of Electronics and Information Technology\\
+
+    \end{center}
+
+    \vspace{3cm}
+
+     \begin{center}
+
+    Data Mining (EDAMI)\\ Project Documentation
+
+    \end{center}
+
+    \noindent\linia
+
+    \begin{center}
+
+      \LARGE \textsc{\@title}
+
+         \end{center}
+
+     \noindent\linia
+
+    \vspace{0.5cm}
+
+    \begin{flushright}
+
+    \begin{minipage}{5cm}
+
+    \textit{\small Author:}\\
+
+    \normalsize \textsc{\@author} \par
+
+    \end{minipage}
+
+    \vspace{4cm}
+    
+ 
+
+     \end{flushright}
+
+    \vspace*{\stretch{6}}
+
+    \begin{center}
+
+    \@date
+
+    \end{center}
+
+  \end{titlepage}
+}
+
+\makeatother
+
+\title{Clustering based on density}
+
+\author{Aleksandra Kurdo\\ Adam Stelmaszczyk}
+
+\begin{document}
+
+\maketitle
+
+
+\onehalfspacing
+
+
+\section*{Project task}
+Implementation and experimental evaluation of DBSCAN~\cite{dbscan} and DENCLUE~\cite{denclue} algorithms. 
+
+\section*{Solution specification}
+
+\subsection*{Data set}
+
+Set with information about geometrical properties of kernels belonging to three different varieties of wheat was chosen.
+
+\subsubsection*{Data set attribute information}
+
+
+To construct the data, seven geometric parameters of wheat kernels were measured: 
+
+\begin{itemize}
+	\item area A, 
+	\item perimeter P, 
+	\item compactness C, 
+	\item length of kernel, 
+	\item width of kernel, 
+	\item asymmetry coefficient 
+	\item length of kernel groove. 
+\end{itemize}
+
+%\begin{figure}[!ht]
+ % \centering
+%  \includegraphics[width=1\textwidth]{images/ex_locations.png}
+ % \caption[]
+%  {Example}
+%\label{ex_}
+%\end{figure}
+
+\end{document}
