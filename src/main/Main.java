@@ -49,7 +49,7 @@ public class Main
 		System.out.println(algorithm.toString());
 		System.out.println(clusters.toString());
 		System.out.println(scorer.toString());
-
+				
 		Visualizer.showClusters(algorithm.toString(), clusters);
 	}
 

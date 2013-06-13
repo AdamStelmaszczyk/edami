@@ -6,6 +6,7 @@ public class Point
 {
 	public final double[] params;
 	public final int clusterId;
+	public double density;
 
 	public Point(double[] params, int clusterId)
 	{
@@ -29,10 +30,22 @@ public class Point
 		}
 		return Math.sqrt(sum);
 	}
+	
+	public double getEuclideanNorm() {
+	    double sum = 0;
+
+	    for(int i=0 ; i < this.params.length ; i++){
+	    	sum += this.params[i] *  this.params[i];
+	    }
+	    
+	    double norm = Math.sqrt(sum); 
+	    return norm;
+	}
 
 	@Override
 	public String toString()
 	{
-		return Arrays.toString(params);
+		return (Arrays.toString(params) + " dest:" + density);
 	}
+
 }
