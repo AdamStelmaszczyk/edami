@@ -115,16 +115,18 @@ All of these parameters were real-valued continuous.
  
 \subsubsection*{DBSCAN algorithm}
 
-
-
+DBSCAN algorithm is relatively simple algorithm controlled with 2 parameters, namely EPS and MIN\_PTS. \cite{dbscan}
+Basically, we are iterating over a set of unvisited points. If we found a core point (a point which has
+at least MIN\_PTS in his Eps-neighbourhood), we are starting a new cluster. Looking at the neighbours 
+of found core point we are trying to expand this new cluster as much as possible (basing on the Eps-neighbourhood).
 
 
 \subsubsection*{DENCLUE algorithm}
 
-Denclue algorithm is based on the idea that the influence of each data point can be modeled using a mathematical 
-function (influence function). The overall density of the data space can be calculated as the sum of the influence 
+DENCLUE algorithm is based on the idea that the influence of each data point can be modeled using a mathematical 
+function (influence function). \cite{denclue} The overall density of the data space can be calculated as the sum of the influence 
 function of all data points. Clusters can be determined mathematically by identifying density-attractors, 
-which are the local maxima of the overall density function. The Denclue algorithm works in two steps:
+which are the local maxima of the overall density function. The DENCLUE algorithm works in two steps:
 
 \begin{enumerate}
 	\item It is preclustering step, in which a map of the relevant portion of the data space is constructed. The map is used to speed up the calculation of the density function which requires to efficiently access neighboring portions of the data space. 
@@ -147,7 +149,6 @@ Other arguments that algorithms need are declared directly in the program files.
  	\caption[]
 	{Class diagram for algorithms package}
 	\end{figure}
-
 
 	\item \texttt{structures} Here are located classes Cluster, Point and Points, that used simply to describe set of points and generated clusters. 
 
