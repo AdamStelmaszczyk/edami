@@ -33,8 +33,6 @@ public class HyperSpace {
 		}
 		String key = getCubeKey(cube_bounds);
 
-		System.out.println(key);
-
 		//find cube with such key
 		HyperCube cube = null;
 
@@ -69,21 +67,6 @@ public class HyperSpace {
 		return key;
 	}
 
-	/*public void print() {
-		System.out.println("\n\n\n\n\n\nPopulated Cubes "+ populatedCubes.size() +"\n\n" );
-
-		System.out.println("\nHightly Populated Cubes "+ hightlyPopulatedCubes.size() +"\n");
-
-		for (HyperCube cube : hightlyPopulatedCubes) {
-			System.out.println("key: " + cube.hypercube_key);
-			System.out.println("mean: " + cube.mean()[0]+ " " + cube.mean()[1]);
-			System.out.println("ref: " + cube.neighbors.size());
-			System.out.println("points.size(): " + cube.points.size() +"\n\n");
-		}
-		
-		System.out.println("\n\n Popolated cubes + neighbors: " + map.size() +"\n\n");
-
-	}*/
 
 	public void connectMap() {
 		for (HyperCube cube : populatedCubes) {
