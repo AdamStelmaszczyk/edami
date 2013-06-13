@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-2.3-1.40.12 (TeX Live 2011) (format=pdflatex 2012.4.23)  13 JUN 2013 22:42
+This is pdfTeX, Version 3.1415926-2.3-1.40.12 (TeX Live 2011) (format=pdflatex 2012.4.23)  13 JUN 2013 22:51
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -430,14 +430,14 @@ File: images/scorer_package.png Graphic file (type png)
 
 <use images/scorer_package.png>
 Package pdftex.def Info: images/scorer_package.png used on input line 169.
-(pdftex.def)             Requested size: 312.00119pt x 248.82573pt.
+(pdftex.def)             Requested size: 234.00238pt x 186.62003pt.
 
 <images/visualizer_package.png, id=22, 294.09875pt x 238.8925pt>
 File: images/visualizer_package.png Graphic file (type png)
 
 <use images/visualizer_package.png>
 Package pdftex.def Info: images/visualizer_package.png used on input line 178.
-(pdftex.def)             Requested size: 312.00119pt x 253.43625pt.
+(pdftex.def)             Requested size: 234.00238pt x 190.07901pt.
 
 <images/main_package.png, id=23, 275.0275pt x 207.77625pt>
 File: images/main_package.png Graphic file (type png)
@@ -445,18 +445,38 @@ File: images/main_package.png Graphic file (type png)
 <use images/main_package.png>
 Package pdftex.def Info: images/main_package.png used on input line 187.
 (pdftex.def)             Requested size: 312.00119pt x 235.72919pt.
- [3 <./images/algorithms_package.png>] [4 <./images/structures_package.png>] [5
- <./images/scorer_package.png> <./images/visualizer_package.png>] [6 <./images/
-main_package.png>] (./project_documentation.aux)
+ [3 <./images/algorithms_package.png>]
+<images/perfect.png, id=28, 584.1825pt x 244.915pt>
+File: images/perfect.png Graphic file (type png)
+ <use images/perfect.png>
+Package pdftex.def Info: images/perfect.png used on input line 204.
+(pdftex.def)             Requested size: 312.00119pt x 130.8096pt.
+
+<images/dbscan.png, id=29, 604.2575pt x 232.87pt>
+File: images/dbscan.png Graphic file (type png)
+ <use images/dbscan.png>
+Package pdftex.def Info: images/dbscan.png used on input line 211.
+(pdftex.def)             Requested size: 312.00119pt x 120.2403pt.
+
+<images/denclue.png, id=30, 588.1975pt x 250.9375pt>
+File: images/denclue.png Graphic file (type png)
+ <use images/denclue.png>
+Package pdftex.def Info: images/denclue.png used on input line 218.
+(pdftex.def)             Requested size: 312.00119pt x 133.10727pt.
+
+[4 <./images/structures_package.png>] [5 <./images/scorer_package.png> <./image
+s/visualizer_package.png>] [6 <./images/main_package.png> <./images/perfect.png
+> <./images/dbscan.png>] [7 <./images/denclue.png>]
+(./project_documentation.aux)
 
 LaTeX Warning: There were undefined references.
 
  ) 
 Here is how much of TeX's memory you used:
- 2077 strings out of 493633
- 28745 string characters out of 3143377
- 85042 words of memory out of 3000000
- 5344 multiletter control sequences out of 15000+200000
+ 2092 strings out of 493633
+ 29046 string characters out of 3143377
+ 85043 words of memory out of 3000000
+ 5356 multiletter control sequences out of 15000+200000
  9788 words of font info for 34 fonts, out of 3000000 for 9000
  831 hyphenation exceptions out of 8191
  37i,5n,23p,421b,282s stack positions out of 5000i,500n,10000p,200000b,50000s
@@ -466,10 +486,10 @@ Here is how much of TeX's memory you used:
 /usr/local/texlive/2011/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb></u
 sr/local/texlive/2011/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></us
 r/local/texlive/2011/texmf-dist/fonts/type1/public/amsfonts/cm/cmti10.pfb>
-Output written on project_documentation.pdf (7 pages, 278894 bytes).
+Output written on project_documentation.pdf (8 pages, 313376 bytes).
 PDF statistics:
- 63 PDF objects out of 1000 (max. 8388607)
- 37 compressed objects within 1 object stream
+ 69 PDF objects out of 1000 (max. 8388607)
+ 39 compressed objects within 1 object stream
  0 named destinations out of 1000 (max. 500000)
- 26 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 41 words of extra memory for PDF output out of 10000 (max. 10000000)
 
