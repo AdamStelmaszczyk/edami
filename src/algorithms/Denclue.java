@@ -1,6 +1,5 @@
 package algorithms;
 
-import java.text.DecimalFormat;
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.Map;
@@ -19,8 +18,8 @@ public class Denclue extends ClusteringAlgorithm
 	private final int MIN_PNT = 5;
 
 	private final Set<Point> unvisited = Collections.newSetFromMap(new ConcurrentHashMap<Point, Boolean>());
+
 	private final HyperSpace hyperspace = new HyperSpace(SIGMA, MIN_PNT);
-	private Map<Integer, Point>  attractors = new HashMap<Integer, Point>();
 
 	private Map<Point, Points> attractorsWithPoints = new HashMap<Point, Points>();
 
@@ -35,40 +34,56 @@ public class Denclue extends ClusteringAlgorithm
 		System.out.println("\n\t\tDENCLUE Algorithm");
 		Clusters clusters = new Clusters();
 		unvisited.addAll(input);
-		
-		System.out.println("Get populated cubes");
-		detPopulatedCubes();
-		
-		System.out.println("Get hightly populated cubes and create their connection map");
-		hyperspace.connectMap();
-		
-		System.out.println("Find denstity attractors");
-		detDensAttractors();
-		
-		System.out.println("Find pathes between attractors");
-		for (int i = 0; i < attractors.size(); i++) {
-			for (int j = i+1; j < attractors.size(); j++) {
-				if (pathBetweenExists(attractors.get(i), i, attractors.get(j)))
-					break;
-			}
-		}
-		
-		//data
-		System.out.println("\n\tDATA: ");
-		hyperspace.print();
 
-		System.out.println("\n\n\nAttractors "+ attractorsWithPoints.size()+"\n\n\n");
+		//System.out.println("Get populated cubes");
+		detPopulatedCubes();
+
+		//System.out.println("Get hightly populated cubes and create their connection map");
+		hyperspace.connectMap();
+
+		//System.out.println("Find denstity attractors");
+		detDensAttractors();
+
+		//System.out.println("Find pathes between attractors");
+		boolean merge = true;
+		do
+		{
+			merge = mergeClusters();
+		} while(merge);
+
 
 		for (Point point : attractorsWithPoints.keySet()) {
-			System.out.println(point.toString());
-			System.out.println(attractorsWithPoints.get(point).size());
-			
-			clusters.add(attractorsWithPoints.get(point));
+			if (attractorsWithPoints.get(point).size() > MIN_PNT)
+				clusters.add(attractorsWithPoints.get(point));
 		}
 
 		return clusters;
 	}
 
+	private boolean mergeClusters() {
+
+		for (Point p1 : attractorsWithPoints.keySet()) {
+			for (Point p2 : attractorsWithPoints.keySet()) {
+				if (p1.params.equals(p2.params)){
+				}
+				else 
+				{
+					if(pathBetweenExists(p1, attractorsWithPoints.get(p1), p2, attractorsWithPoints.get(p2)))
+					{
+						Points union_points = new Points();
+						Point union_point = p1;
+						union_points.addAll(attractorsWithPoints.get(p1));
+						union_points.addAll(attractorsWithPoints.get(p2));
+						attractorsWithPoints.remove(p1);
+						attractorsWithPoints.remove(p2);
+						attractorsWithPoints.put(union_point, union_points);
+						return true;
+					}
+				}
+			}
+		}
+		return false;
+	}
 
 	private void detPopulatedCubes() {
 		for (final Point point : unvisited)
@@ -79,16 +94,12 @@ public class Denclue extends ClusteringAlgorithm
 	}
 
 	private Clusters detDensAttractors() {
-		System.out.println("\nfind density attractors");
-		int i = 0;
 		for (HyperCube cube : hyperspace.map.values()) {
 			for (Point point : cube.points) {
 				point.density = calculateDensity(point);
 				Point densityPoint = getDensityAttractor(point);
 
-				if (!attractors.containsValue(densityPoint)) {
-					attractors.put(i, densityPoint);
-					i++;
+				if (!attractorsWithPoints.containsValue(densityPoint)) {
 
 					Points points = new Points();
 					points.add(point);
@@ -100,9 +111,8 @@ public class Denclue extends ClusteringAlgorithm
 	}
 
 	//Calculate the influence of an entity in another. 
-	//The chosen influence function was the Gaussian Influence Function, defined by:
 	// I(x,y) = exp { - [distance(x,y)**2] / [2*(sigma**2)] }
-	double calculateInfluence(Point point1, Point point2){
+	private double calculateInfluence(Point point1, Point point2){
 		double distance = point1.distanceTo(point2);
 
 		if( distance == 0 ){
@@ -119,7 +129,7 @@ public class Denclue extends ClusteringAlgorithm
 
 	// Calculate the density in an entity. It's defined as the sum of the
 	// influence of each another entity of dataset.
-	double calculateDensity(Point _point){
+	private double calculateDensity(Point _point){
 
 		double density = 0;
 
@@ -135,7 +145,7 @@ public class Denclue extends ClusteringAlgorithm
 
 
 	//Calculate gradient of density functions in a given spatial point.
-	double[] calculateGradient(Point point){
+	private double[] calculateGradient(Point point){
 		double[] gradient = new double[point.params.length];
 
 
@@ -158,9 +168,8 @@ public class Denclue extends ClusteringAlgorithm
 		return gradient;
 	}
 
-
 	// Find density-attractor for an entity (a hill climbing algorithm)
-	Point getDensityAttractor(Point point){
+	private Point getDensityAttractor(Point point){
 		double delta = 1;
 
 		Point curr_attractor = point;
@@ -216,13 +225,13 @@ public class Denclue extends ClusteringAlgorithm
 			found_attractor = curr_attractor;
 
 
-		return round(found_attractor);
+		return found_attractor;
 
 	}
 
 	//Find path between two attractors
-	Boolean pathBetweenExists(Point point1, int key,Point point2 ){
-
+	private Boolean pathBetweenExists(Point point1, Points points1, Point point2, Points points2)
+	{
 		Map<Point, Boolean> usedEntities = new HashMap<Point, Boolean>();
 		usedEntities.put(point1, true);
 		usedEntities.put(point2, true);
@@ -230,32 +239,26 @@ public class Denclue extends ClusteringAlgorithm
 
 		// If the distance between points <= sigma, a path exist
 		if(point1.distanceTo(point2) <= SIGMA){
-			
-			System.out.println("Path found");
-			System.out.println(attractors.size());
-			attractors.remove(key);
-			System.out.println(attractors.size());
-			
-			Points points = new Points();
-			points.addAll(attractorsWithPoints.get(point1));
-			attractorsWithPoints.get(point2).addAll(points);
 
 			return true;
 		}
-		
-		//to do
-		
-		return false;
-	}
 
-	private Point round(Point point) {
-		DecimalFormat format = new DecimalFormat("#.###");
-
-		for (int i = 0; i < point.params.length; i++) {
-			point.params[i] = Double.valueOf(format.format(point.params[i]));
+		//
+		int nearest_points = 0;
+		for (Point dependent_point1 : points1) {
+			for (Point dependent_point2 : points2) {
+				if(dependent_point1.distanceTo(dependent_point2) <= SIGMA)
+					nearest_points ++;
+			}
 		}
 
-		return point;
+		if (nearest_points >= MIN_PNT)
+		{
+			return true;
+		}
+
+
+		return false;
 	}
 
 	@Override

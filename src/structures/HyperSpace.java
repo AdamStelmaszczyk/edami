@@ -69,15 +69,9 @@ public class HyperSpace {
 		return key;
 	}
 
-	public void print() {
+	/*public void print() {
 		System.out.println("\n\n\n\n\n\nPopulated Cubes "+ populatedCubes.size() +"\n\n" );
-		//for (HyperCube cube : populatedCubes) {
-			//System.out.println("key: " + cube.hypercube_key);
-			//System.out.println("mean: " + cube.mean()[0]+ " " + cube.mean()[1]);
-			//for (Point point : cube.points) {
-				//System.out.println("point: " + point.toString());
-			//}
-		//}
+
 		System.out.println("\nHightly Populated Cubes "+ hightlyPopulatedCubes.size() +"\n");
 
 		for (HyperCube cube : hightlyPopulatedCubes) {
@@ -89,7 +83,7 @@ public class HyperSpace {
 		
 		System.out.println("\n\n Popolated cubes + neighbors: " + map.size() +"\n\n");
 
-	}
+	}*/
 
 	public void connectMap() {
 		for (HyperCube cube : populatedCubes) {
