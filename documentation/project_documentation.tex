@@ -89,9 +89,9 @@ Implementation and experimental evaluation of DBSCAN~\cite{dbscan} and DENCLUE~\
 
 \section*{Solution specification}
 
-\subsection*{Data set}~\cite{dataset}
+\subsection*{Data set}
 
-Set with information about geometrical properties of kernels belonging to three different varieties of wheat was chosen.
+Set with information about geometrical properties of kernels belonging to three different varieties of wheat was chosen.\footnote{\url{http://archive.ics.uci.edu/ml/machine-learning-databases/00236/seeds_dataset.txt}}
 
 \subsubsection*{Data set attribute information}
 
@@ -121,30 +121,25 @@ All of these parameters were real-valued continuous.
 
 \subsubsection*{DENCLUE algorithm}
 
-Denclue algorithm is based on the idea that the influence of each data point can be modeled using a mathematical function (influence function). The overall density of the data space can be calculated as the sum of the influence function of all data points. Clusters can be determined mathematically by identifying density-attractors, which are the local maxima of the overall density function.
+Denclue algorithm is based on the idea that the influence of each data point can be modeled using a mathematical 
+function (influence function). The overall density of the data space can be calculated as the sum of the influence 
+function of all data points. Clusters can be determined mathematically by identifying density-attractors, 
+which are the local maxima of the overall density function. The Denclue algorithm works in two steps:
 
-The Denclue algorithm works in two steps. 
-
-Step one: 
-
-\begin{itemize}
+\begin{enumerate}
 	\item It is preclustering step, in which a map of the relevant portion of the data space is constructed. The map is used to speed up the calculation of the density function which requires to efficiently access neighboring portions of the data space. 
-\end{itemize}
-
-
-Step two:
-
-\begin{itemize}
 	\item It is the actual clustering step, in which the algorithm identifies the density-attractors and the corresponding density-attracted points.
-\end{itemize}
+\end{enumerate}
 
 \subsection*{Implementation details}
 
-As implementation language for the project Java was chosen. Data set is read from a text file, that located in program root folder, and a set of objects that represent points is generated. On this set Dbscan and Denclue algorithms are runs. Other arguments that algorithms need are declared directly in the program files.
-
-Program consists from five packages:
+As implementation language for the project Java was chosen. 
+Data set is read from a text file, that located in program root folder, 
+and a set of objects that represent points is generated. 
+On this set DBSCAN and DENCLUE algorithms are run. 
+Other arguments that algorithms need are declared directly in the program files. Whole program consists of five packages:
 \begin{itemize}
-	\item algorithms package. In this package abstract class ClusteringAlgorithm and inherited from it classes Dbscan and Denclue are located. 
+	\item \texttt{algorithms} In this package abstract class ClusteringAlgorithm and inherited from it classes Dbscan and Denclue are located. 
 
 	\begin{figure}[!ht]
  	\centering
@@ -154,7 +149,7 @@ Program consists from five packages:
 	\end{figure}
 
 
-	\item structures package. Here are located classes Cluster, Point and Points, that used simply to describe set of points and generated clusters. 
+	\item \texttt{structures} Here are located classes Cluster, Point and Points, that used simply to describe set of points and generated clusters. 
 
 	\begin{figure}[!ht]
  	\centering
@@ -163,7 +158,7 @@ Program consists from five packages:
 	{Class diagram for structures package}
 	\end{figure}
 
-	\item scorer package. This package consists of a class Scorer, that used to generate some statistics about created by algorithm clusters.
+	\item \texttt{scorer} This package consists of a class Scorer, that used to generate some statistics about created by algorithm clusters.
 
 	\begin{figure}[!ht]
  	\centering
@@ -172,7 +167,7 @@ Program consists from five packages:
 	{Class diagram for scorer package}
 	\end{figure}
 
-\item visualizer package. Used for  the clusters visualization.
+	\item \texttt{visualizer} Used for the clusters visualization.
 
 	\begin{figure}[!ht]
  	\centering
@@ -181,7 +176,7 @@ Program consists from five packages:
 	{Class diagram for visualizer package}
 	\end{figure}
 
-\item main package. Used for  reading the data set from the file and executing algorithms.
+	\item \texttt{main} Used for reading the data set from the file and executing algorithms.
 
 	\begin{figure}[!ht]
  	\centering
@@ -190,9 +185,7 @@ Program consists from five packages:
 	{Class diagram for main package}
 	\end{figure}
 
-
 \end{itemize}
-
 
 \subsection*{User guide}
 
