@@ -137,7 +137,63 @@ Step two:
 	\item It is the actual clustering step, in which the algorithm identifies the density-attractors and the corresponding density-attracted points.
 \end{itemize}
 
+\subsection*{Implementation details}
 
+As implementation language for the project Java was chosen. Data set is read from a text file, that located in program root folder, and a set of objects that represent points is generated. On this set Dbscan and Denclue algorithms are runs. Other arguments that algorithms need are declared directly in the program files.
+
+Program consists from five packages:
+\begin{itemize}
+	\item algorithms package. In this package abstract class ClusteringAlgorithm and inherited from it classes Dbscan and Denclue are located. 
+
+	\begin{figure}[!ht]
+ 	\centering
+	\includegraphics[width=0.8\textwidth]{images/algorithms_package.png}
+ 	\caption[]
+	{Class diagram for algorithms package}
+	\end{figure}
+
+
+	\item structures package. Here are located classes Cluster, Point and Points, that used simply to describe set of points and generated clusters. 
+
+	\begin{figure}[!ht]
+ 	\centering
+	\includegraphics[width=0.8\textwidth]{images/structures_package.png}
+ 	\caption[]
+	{Class diagram for structures package}
+	\end{figure}
+
+	\item scorer package. This package consists of a class Scorer, that used to generate some statistics about created by algorithm clusters.
+
+	\begin{figure}[!ht]
+ 	\centering
+	\includegraphics[width=0.8\textwidth]{images/scorer_package.png}
+ 	\caption[]
+	{Class diagram for scorer package}
+	\end{figure}
+
+\item visualizer package. Used for  the clusters visualization.
+
+	\begin{figure}[!ht]
+ 	\centering
+	\includegraphics[width=0.8\textwidth]{images/visualizer_package.png}
+ 	\caption[]
+	{Class diagram for visualizer package}
+	\end{figure}
+
+\item main package. Used for  reading the data set from the file and executing algorithms.
+
+	\begin{figure}[!ht]
+ 	\centering
+	\includegraphics[width=0.8\textwidth]{images/main_package.png}
+ 	\caption[]
+	{Class diagram for main package}
+	\end{figure}
+
+
+\end{itemize}
+
+
+\subsection{User guide}
 
 
 %\begin{figure}[!ht]

@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-2.3-1.40.12 (TeX Live 2011) (format=pdflatex 2012.4.23)  13 JUN 2013 22:30
+This is pdfTeX, Version 3.1415926-2.3-1.40.12 (TeX Live 2011) (format=pdflatex 2012.4.23)  13 JUN 2013 22:42
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -410,30 +410,66 @@ File: omscmr.fd 1999/05/25 v2.5h Standard LaTeX font definitions
 )
 LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <12> not available
 (Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 101.
- [1] [2]
-(./project_documentation.aux)
+ [1]
+<images/algorithms_package.png, id=15, 367.3725pt x 348.30125pt>
+File: images/algorithms_package.png Graphic file (type png)
+
+<use images/algorithms_package.png>
+Package pdftex.def Info: images/algorithms_package.png used on input line 150.
+(pdftex.def)             Requested size: 312.00119pt x 295.82361pt.
+
+<images/structures_package.png, id=17, 305.14pt x 338.26375pt>
+File: images/structures_package.png Graphic file (type png)
+
+<use images/structures_package.png>
+Package pdftex.def Info: images/structures_package.png used on input line 160.
+(pdftex.def)             Requested size: 312.00119pt x 345.88126pt.
+ [2]
+<images/scorer_package.png, id=21, 242.9075pt x 193.72375pt>
+File: images/scorer_package.png Graphic file (type png)
+
+<use images/scorer_package.png>
+Package pdftex.def Info: images/scorer_package.png used on input line 169.
+(pdftex.def)             Requested size: 312.00119pt x 248.82573pt.
+
+<images/visualizer_package.png, id=22, 294.09875pt x 238.8925pt>
+File: images/visualizer_package.png Graphic file (type png)
+
+<use images/visualizer_package.png>
+Package pdftex.def Info: images/visualizer_package.png used on input line 178.
+(pdftex.def)             Requested size: 312.00119pt x 253.43625pt.
+
+<images/main_package.png, id=23, 275.0275pt x 207.77625pt>
+File: images/main_package.png Graphic file (type png)
+
+<use images/main_package.png>
+Package pdftex.def Info: images/main_package.png used on input line 187.
+(pdftex.def)             Requested size: 312.00119pt x 235.72919pt.
+ [3 <./images/algorithms_package.png>] [4 <./images/structures_package.png>] [5
+ <./images/scorer_package.png> <./images/visualizer_package.png>] [6 <./images/
+main_package.png>] (./project_documentation.aux)
 
 LaTeX Warning: There were undefined references.
 
  ) 
 Here is how much of TeX's memory you used:
- 2050 strings out of 493633
- 27999 string characters out of 3143377
+ 2077 strings out of 493633
+ 28745 string characters out of 3143377
  85042 words of memory out of 3000000
- 5324 multiletter control sequences out of 15000+200000
+ 5344 multiletter control sequences out of 15000+200000
  9788 words of font info for 34 fonts, out of 3000000 for 9000
  831 hyphenation exceptions out of 8191
- 37i,4n,23p,421b,231s stack positions out of 5000i,500n,10000p,200000b,50000s
+ 37i,5n,23p,421b,282s stack positions out of 5000i,500n,10000p,200000b,50000s
 </usr/local/texlive/2011/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb
 ></usr/local/texlive/2011/texmf-dist/fonts/type1/public/amsfonts/cm/cmcsc10.pfb
 ></usr/local/texlive/2011/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb><
 /usr/local/texlive/2011/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb></u
 sr/local/texlive/2011/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></us
 r/local/texlive/2011/texmf-dist/fonts/type1/public/amsfonts/cm/cmti10.pfb>
-Output written on project_documentation.pdf (3 pages, 76467 bytes).
+Output written on project_documentation.pdf (7 pages, 278894 bytes).
 PDF statistics:
- 38 PDF objects out of 1000 (max. 8388607)
- 26 compressed objects within 1 object stream
+ 63 PDF objects out of 1000 (max. 8388607)
+ 37 compressed objects within 1 object stream
  0 named destinations out of 1000 (max. 500000)
- 1 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 26 words of extra memory for PDF output out of 10000 (max. 10000000)
 
