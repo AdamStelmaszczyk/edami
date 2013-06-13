@@ -88,7 +88,7 @@ Implementation and experimental evaluation of DBSCAN~\cite{dbscan} and DENCLUE~\
 
 \section*{Solution specification}
 
-\subsection*{Data set}
+\subsection*{Data set}~\cite{dataset}
 
 Set with information about geometrical properties of kernels belonging to three different varieties of wheat was chosen.
 
@@ -107,6 +107,39 @@ To construct the data, seven geometric parameters of wheat kernels were measured
 	\item length of kernel groove. 
 \end{itemize}
 
+All of these parameters were real-valued continuous.
+
+
+\subsection*{Algorithms description}
+ 
+\subsubsection*{DBSCAN algorithm}
+
+
+
+
+
+\subsubsection*{DENCLUE algorithm}
+
+Denclue algorithm is based on the idea that the influence of each data point can be modeled using a mathematical function (influence function). The overall density of the data space can be calculated as the sum of the influence function of all data points. Clusters can be determined mathematically by identifying density-attractors, which are the local maxima of the overall density function.
+
+The Denclue algorithm works in two steps. 
+
+Step one: 
+
+\begin{itemize}
+	\item It is preclustering step, in which a map of the relevant portion of the data space is constructed. The map is used to speed up the calculation of the density function which requires to efficiently access neighboring portions of the data space. 
+\end{itemize}
+
+
+Step two:
+
+\begin{itemize}
+	\item It is the actual clustering step, in which the algorithm identifies the density-attractors and the corresponding density-attracted points.
+\end{itemize}
+
+
+
+
 %\begin{figure}[!ht]
  % \centering
 %  \includegraphics[width=1\textwidth]{images/ex_locations.png}
@@ -114,5 +147,8 @@ To construct the data, seven geometric parameters of wheat kernels were measured
 %  {Example}
 %\label{ex_}
 %\end{figure}
+
+
+%\url{http://archive.ics.uci.edu/ml/machine-learning-databases/00236/} 
 
 \end{document}

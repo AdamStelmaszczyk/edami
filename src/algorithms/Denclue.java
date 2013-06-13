@@ -31,7 +31,6 @@ public class Denclue extends ClusteringAlgorithm
 	@Override
 	public Clusters getClusters()
 	{
-		System.out.println("\n\t\tDENCLUE Algorithm");
 		Clusters clusters = new Clusters();
 		unvisited.addAll(input);
 
