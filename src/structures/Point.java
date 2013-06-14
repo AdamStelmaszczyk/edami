@@ -30,22 +30,24 @@ public class Point
 		}
 		return Math.sqrt(sum);
 	}
-	
-	public double getEuclideanNorm() {
-	    double sum = 0;
 
-	    for(int i=0 ; i < this.params.length ; i++){
-	    	sum += this.params[i] *  this.params[i];
-	    }
-	    
-	    double norm = Math.sqrt(sum); 
-	    return norm;
+	public double getEuclideanNorm()
+	{
+		double sum = 0;
+
+		for (final double param : params)
+		{
+			sum += param * param;
+		}
+
+		final double norm = Math.sqrt(sum);
+		return norm;
 	}
 
 	@Override
 	public String toString()
 	{
-		return (Arrays.toString(params) + " dest:" + density);
+		return Arrays.toString(params) + " dest:" + density;
 	}
 
 }
