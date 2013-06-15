@@ -74,7 +74,7 @@
 
 \title{Clustering based on density}
 
-\authors{Aleksandra Kurdo\\ Adam Stelmaszczyk}
+\author{Aleksandra Kurdo\\ Adam Stelmaszczyk}
 
 \begin{document}
 
@@ -124,7 +124,7 @@ of found core point we are trying to expand this new cluster as much as possible
 
 \subsubsection*{DENCLUE algorithm}
 
-Denclue algorithm is based on the idea that the influence of each data point can be modeled using a mathematical function (influence function). The overall density of the data space can be calculated as the sum of the influence function of all data points. Clusters can be determined mathematically by identifying density-attractors, which are the local maxima of the overall density function. The Denclue algorithm works in two steps:
+DENCLUE algorithm is based on the idea that the influence of each data point can be modeled using a mathematical function (influence function). The overall density of the data space can be calculated as the sum of the influence function of all data points. Clusters can be determined mathematically by identifying density-attractors, which are the local maxima of the overall density function. The DENCLUE algorithm works in two steps:
 
 \begin{enumerate}
 	\item It is preclustering step, in which a map of the relevant portion of the data space is constructed. The map is used to speed up the calculation of the density function which requires to efficiently access neighboring portions of the data space. 
@@ -140,7 +140,7 @@ On this set DBSCAN and DENCLUE algorithms are run.
 Other arguments that algorithms need are declared directly in the program files. Whole program consists of five packages:
 
 \begin{itemize}
-	\item \texttt{algorithms} In this package abstract class ClusteringAlgorithm and inherited from it classes Dbscan and Denclue are located. 
+	\item \texttt{algorithms} In this package abstract class ClusteringAlgorithm and inherited from it classes DBSCAN and DENCLUE are located. 
 
 	\begin{figure}[!ht]
  	\centering
