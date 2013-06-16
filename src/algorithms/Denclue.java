@@ -14,8 +14,8 @@ import structures.Points;
 
 public class Denclue extends ClusteringAlgorithm
 {
-	private final double SIGMA = 0.7;
-	private final int MIN_PNT = 5;
+	private final double SIGMA = 0.9;
+	private final int MIN_PNT = 3;
 	private final Set<Point> unvisited = Collections.newSetFromMap(new ConcurrentHashMap<Point, Boolean>());
 	private final HyperSpace hyperspace = new HyperSpace(SIGMA, MIN_PNT);
 	private final Map<Point, Points> attractorsWithPoints = new HashMap<Point, Points>();
