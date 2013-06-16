@@ -43,13 +43,18 @@ public class Main
 
 	private static void testAlgorithm(Points input, ClusteringAlgorithm algorithm)
 	{
+		long startTime = System.currentTimeMillis();
 		final Clusters clusters = algorithm.getClusters();
+		long stopTime = System.currentTimeMillis();
+		long elapsedTime = stopTime - startTime;
+
 		final Scorer scorer = new Scorer(input, clusters);
 
 		System.out.println(algorithm.toString());
+		System.out.println("Time: " + elapsedTime);
 		System.out.println(clusters.toString());
 		System.out.println(scorer.toString());
-				
+
 		Visualizer.showClusters(algorithm.toString(), clusters);
 	}
 

@@ -31,6 +31,7 @@ public class Denclue extends ClusteringAlgorithm
 		final Clusters clusters = new Clusters();
 		unvisited.addAll(input);
 
+
 		// System.out.println("Get populated cubes");
 		detPopulatedCubes();
 
@@ -95,15 +96,16 @@ public class Denclue extends ClusteringAlgorithm
 			for (final Point point : cube.points)
 			{
 				point.density = calculateDensity(point);
+
 				final Point densityPoint = getDensityAttractor(point);
 
 				if (!attractorsWithPoints.containsValue(densityPoint))
 				{
-
 					final Points points = new Points();
 					points.add(point);
 					attractorsWithPoints.put(densityPoint, points);
 				}
+
 			}
 		}
 		return null;
@@ -174,7 +176,7 @@ public class Denclue extends ClusteringAlgorithm
 		Point curr_attractor = point;
 		Point found_attractor = null;
 
-		int MAX_ITERATIONS = 1000;
+		int MAX_ITERATIONS = 5;
 		Boolean reachedTop = false;
 
 		do
@@ -197,8 +199,8 @@ public class Denclue extends ClusteringAlgorithm
 			// Calculate next candidate to attractor
 			final double grad_entity_norm = grad_point.getEuclideanNorm();
 
-			// if( grad_entity_norm > 0 )
-			// System.out.println("\n\n\n>>>>>\n\n\n");
+			//if( grad_entity_norm < 0 )
+			//System.out.println("\n\n\n>>>>>\n\n\n");
 
 			curr_attractor = last_attractor;
 			for (int i = 0; i < curr_gradient.length; i++)
@@ -226,6 +228,7 @@ public class Denclue extends ClusteringAlgorithm
 			found_attractor = curr_attractor;
 		}
 
+		//System.out.println(MAX_ITERATIONS +"\t"+ Arrays.toString(found_attractor.params));
 		return found_attractor;
 
 	}
@@ -243,19 +246,17 @@ public class Denclue extends ClusteringAlgorithm
 			return true;
 		}
 
-		int nearestPoints = 0;
 		for (final Point dependent_point1 : points1)
 		{
 			for (final Point dependent_point2 : points2)
 			{
 				if (dependent_point1.distanceTo(dependent_point2) <= SIGMA)
-				{
-					nearestPoints++;
-				}
+					return true;
 			}
 		}
 
-		return nearestPoints >= MIN_PNT;
+		return false;
+
 	}
 
 	@Override

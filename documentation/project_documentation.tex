@@ -87,13 +87,13 @@
 \section*{Project task}
 Implementation and experimental evaluation of DBSCAN~\cite{dbscan} and DENCLUE~\cite{denclue} algorithms. 
 
-\section*{Solution specification}
+%\section*{Solution specification}
 
-\subsection*{Data set}
+\section*{Data set}
 
-Set with information about geometrical properties of kernels belonging to three different varieties of wheat was chosen.\footnote{\url{http://archive.ics.uci.edu/ml/machine-learning-databases/00236/seeds_dataset.txt}}
+For the experiments was chosen dataset with information about geometrical properties of kernels belonging to three different varieties of wheat: Kama, Rosa and Canadian (70 elements each, randomly selected). This dataset was found at the page of \textit{UC Irvine Machine Learning Repository}~\cite{dataset}. This set has seven, real-valued attributes, and includes 210 instances. \footnote{\url{http://archive.ics.uci.edu/ml/machine-learning-databases/00236/seeds_dataset.txt}}
 
-\subsubsection*{Data set attribute information}
+\subsection*{Data set attribute information}
 
 
 To construct the data, seven geometric parameters of wheat kernels were measured: 
@@ -111,9 +111,9 @@ To construct the data, seven geometric parameters of wheat kernels were measured
 All of these parameters were real-valued continuous.
 
 
-\subsection*{Algorithms description}
+\section*{Algorithms description}
  
-\subsubsection*{DBSCAN algorithm}
+\subsection*{DBSCAN algorithm}
 
 DBSCAN algorithm is relatively simple algorithm controlled with 2 parameters, namely EPS and MIN\_PTS. \cite{dbscan}
 Basically, we are iterating over a set of unvisited points. If we found a core point (a point which has
@@ -122,7 +122,7 @@ of found core point we are trying to expand this new cluster as much as possible
 
 
 
-\subsubsection*{DENCLUE algorithm}
+\subsection*{DENCLUE algorithm}
 
 DENCLUE algorithm is based on the idea that the influence of each data point can be modeled using a mathematical function (influence function). The overall density of the data space can be calculated as the sum of the influence function of all data points. Clusters can be determined mathematically by identifying density-attractors, which are the local maxima of the overall density function. The DENCLUE algorithm works in two steps:
 
@@ -132,10 +132,10 @@ DENCLUE algorithm is based on the idea that the influence of each data point can
 	\item It is the actual clustering step, in which the algorithm identifies the density-attractors and the corresponding density-attracted points.
 \end{enumerate}
 
-\subsection*{Implementation details}
+\section*{Implementation details}
 
 As implementation language for the project Java was chosen. 
-Data set is read from a text file, that located in program root folder, and a set of objects that represent points is generated. 
+Data set is read from a text file, that located in program root directory, and a set of objects that represent points is generated. 
 On this set DBSCAN and DENCLUE algorithms are run. 
 Other arguments that algorithms need are declared directly in the program files. Whole program consists of five packages:
 
@@ -205,63 +205,76 @@ Other arguments that algorithms need are declared directly in the program files.
 Execute files from edami\_clustering.zip.
 
 
+\noindent 
 Create an empty java project in Eclipse IDE and import extracted files to it. 
 
-
+\noindent 
 Build the project using Eclipse.
 
-
+\noindent 
 To run the program please add execution rights to the run.sh file by typing in console: 
 	chmod + ./run.sh 
 
 
+\noindent 
 Run program:
  ./run.sh
 
-\newpage
 
+\cleardoublepage
 
 \section*{Experimentation results and analysis}
 
-As a result of execution DBSCAN and DENCLUE algorythms two sets of clusters are generated. This clusters are represented as points in 2D view as a set of points that belong to them (pictures~\ref{perfect}, ~\ref{dbscan}, ~\ref{denclue}). Each point represented as a number of it’s cluster. Data set attributes area and asymmetry coefficient are chosen as a dimensions of the view because of their standard deviation. 
+As a result of execution DBSCAN and DENCLUE algorythms two sets of clusters are generated. This clusters are represented as points in 2D view as a set of points that belong to them (pictures~\ref{perfect}, ~\ref{dbscan}, ~\ref{denclue}). Each point represented as a number of it’s cluster. Data set attributes~\textit{area} and~\textit{asymmetry coefficient} are chosen as a dimensions of the view because of their standard deviation. 
 
 \begin{figure}[!ht]
  	\centering
-	\includegraphics[width=0.8\textwidth]{images/perfect.png}
+	\includegraphics[width=0.6\textwidth]{images/perfect.png}
  	\caption[]
-	{Class diagram for main package}
+	{Perfect clustering}
 	\label{perfect}
 	\end{figure}
 
 \begin{figure}[!ht]
  	\centering
-	\includegraphics[width=0.8\textwidth]{images/dbscan.png}
+	\includegraphics[width=0.6\textwidth]{images/dbscan.png}
  	\caption[]
-	{Class diagram for main package}
+	{Clustering made by DBSCAN algorithm}
 	\label{dbscan}
 	\end{figure}
 
 \begin{figure}[!ht]
  	\centering
-	\includegraphics[width=0.8\textwidth]{images/denclue.png}
+	\includegraphics[width=0.6\textwidth]{images/denclue.png}
  	\caption[]
-	{Class diagram for main package}
+	{Clustering made by DENCLUE algorithm}
 		\label{denclue}
 	\end{figure}
 
-Also some statistics for the running algorithms are shown, such as \textit{true positives}, \textit{true negatives} and \textit{rand index} (pictire~\ref{result}).
+Also some statistics for the running algorithms are shown, such as \textit{true positives}, \textit{true negatives} and \textit{rand index} (picture~\ref{result}).
 
 \begin{figure}[!ht]
  	\centering
-	\includegraphics[width=0.37\textwidth]{images/results.png}
+	\includegraphics[width=0.35\textwidth]{images/results.png}
  	\caption[]
 	{The output of the program}
 		\label{result}
-	\end{figure}
+\end{figure}
 
 Parameters for the algorithms were chosen experimentally. The best results were achieved using for DENCLUE and DBSCAN algorithms values near: 
 $$sigma = 0.7, eps = 3$$
 
+The comparison based on time of DENCLUE and DBSCAN algorithms is presented on figure~\ref{comparison_time}.
+
+\begin{figure}[!ht]
+ 	\centering
+	\includegraphics[width=0.7\textwidth]{images/comparison_time.png}
+ 	\caption[]
+	{Comparison of DENCLUE and DBSCAN}
+		\label{comparison_time}
+\end{figure}
+
+What can be seen from achieved by DBSCAN and DENCLUE algorithms results that they are quit different. Rand index for DENCLUE algorithm always was higher, what means that its results for this dataset are better. But on the other hand DENCLUE  algorithm was needed  more time than DBSCAN to do the same work. Should be noticed, that chosen dataset wasn't very big and this difference in time could be changed when algorithms would try to deal with really huge datasets. It can be assumed at the first sight, that for bigger dataset DENCLUE algorithm will be much more slower then DBSCAN, but it's not completely true. Time for DBSCAN algorithm in such situation will rise very quickly and on the other hand such elements in DENCLUE algorithm as dividing data points to cubes, take for big calculations only highly populated cubes ant other elements that were provided to faster the algorithm, will optimize it. And on the tested dataset DENCLUE algorithm dividing cubes for populated and highly populated wasn't a cause of some big decrease of considered cubes. 
 
 
 \cleardoublepage
@@ -269,7 +282,6 @@ $$sigma = 0.7, eps = 3$$
 
 \section*{Conclusion}
 
-What can be seen from achieved by DBSCAN and DENCLUE algorithms results that they are are quit different. Rand index for DENCLUE algorithm is higher, what means that its results for this dataset are better. But on the other hand DENCLUE  algorithm was needed  more time than DBSCAN to do the same work.  Should be noticed, that chosen dataset wasn't very big and this difference in time could be changed when algorithms would try to deal with really huge datasets. It can be assumed at the first sight, that for bigger dataset DENCLUE algorithm will be much more slower then DBSCAN, but it's not completely true. Time for DBSCAN algorithm in such situation will rise very quickly and on the other hand such elements in DENCLUE algorithm as dividing data points to cubes, take for big calculations only highly populated cubes ant other elements that were provided to faster the algorithm, will optimize it. And on the tested dataset DENCLUE algorithm dividing cubes for populated and highly populated wasn't a cause of some big decrease of considered cubes. 
 
 
 

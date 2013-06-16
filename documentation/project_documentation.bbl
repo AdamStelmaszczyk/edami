@@ -1,5 +1,9 @@
 \begin{thebibliography}{1}
 
+\bibitem{dataset}
+{UC Irvine Machine Learning Repository}.
+\newblock \url{http://archive.ics.uci.edu/ml/datasets/seeds}.
+
 \bibitem{dbscan}
 Martin Ester, Hans-Peter Kriegel, Jorg Sander, and Xianowei Xu.
 \newblock A density-based algorithm for discovering clusters in large spatial
