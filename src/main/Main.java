@@ -37,21 +37,31 @@ public class Main
 
 		Visualizer.showClusters("Perfect clustering", input.getPerfectClusters());
 
-		testAlgorithm(input, new Dbscan(input, eps, minPts));
+		
 		testAlgorithm(input, new Denclue(input));
+		testAlgorithm(input, new Dbscan(input, eps, minPts));
 	}
 
 	private static void testAlgorithm(Points input, ClusteringAlgorithm algorithm)
 	{
+		//"start" time and memory measuring
 		long startTime = System.currentTimeMillis();
+		long startFreeMemory = Runtime.getRuntime().freeMemory();
+
 		final Clusters clusters = algorithm.getClusters();
+		
+		//"stop" time and memory measuring
+		long stopFreeMemory = Runtime.getRuntime().freeMemory();
 		long stopTime = System.currentTimeMillis();
 		long elapsedTime = stopTime - startTime;
+		long usedMemory = startFreeMemory - stopFreeMemory;
+
 
 		final Scorer scorer = new Scorer(input, clusters);
 
 		System.out.println(algorithm.toString());
 		System.out.println("Time: " + elapsedTime);
+		System.out.println("Memory: " + usedMemory);
 		System.out.println(clusters.toString());
 		System.out.println(scorer.toString());
 

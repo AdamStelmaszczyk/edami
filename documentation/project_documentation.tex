@@ -155,7 +155,7 @@ Other arguments that algorithms need are declared directly in the program files.
 
 	\begin{figure}[!ht]
  	\centering
-	\includegraphics[width=0.8\textwidth]{images/structures_package.png}
+	\includegraphics[width=0.7\textwidth]{images/structures_package.png}
  	\caption[]
 	{Class diagram for structures package}
 \label{structures}
@@ -166,7 +166,7 @@ Other arguments that algorithms need are declared directly in the program files.
 
 	\begin{figure}[!ht]
  	\centering
-	\includegraphics[width=0.6\textwidth]{images/scorer_package.png}
+	\includegraphics[width=0.4\textwidth]{images/scorer_package.png}
  	\caption[]
 	{Class diagram for scorer package}
 	\label{scorer}
@@ -177,7 +177,7 @@ Other arguments that algorithms need are declared directly in the program files.
 
 	\begin{figure}[!ht]
  	\centering
-	\includegraphics[width=0.6\textwidth]{images/visualizer_package.png}
+	\includegraphics[width=0.35\textwidth]{images/visualizer_package.png}
  	\caption[]
 	{Class diagram for visualizer package}
 \label{visualizer}
@@ -189,7 +189,7 @@ Other arguments that algorithms need are declared directly in the program files.
 
 	\begin{figure}[!ht]
  	\centering
-	\includegraphics[width=0.8\textwidth]{images/main_package.png}
+	\includegraphics[width=0.45\textwidth]{images/main_package.png}
  	\caption[]
 	{Class diagram for main package}
 \label{main}
@@ -261,10 +261,14 @@ Also some statistics for the running algorithms are shown, such as \textit{true 
 		\label{result}
 \end{figure}
 
-Parameters for the algorithms were chosen experimentally. The best results were achieved using for DENCLUE and DBSCAN algorithms values near: 
-$$sigma = 0.7, eps = 3$$
+Parameters for the algorithms were chosen experimentally. The best results were achieved using for DENCLUE  algorithm values near: 
+$$SIGMA = 0.7, EPS = 2$$
 
-The comparison based on time of DENCLUE and DBSCAN algorithms is presented on figure~\ref{comparison_time}.
+and for DBSCAN algorithm:
+$$EPS = 0.9, MIN\_PT = 5$$
+
+
+The comparison based on time of DENCLUE and DBSCAN algorithms is presented on figure~\ref{comparison_time}. It's hard to compare algorithms based on the memory they used, because of the Java automatic garbage collection, which programmer cannot control. The attempts to calculate free memory before and after the algorithm execution was not successful: sometimes there were zero difference in the amount of free memory. 
 
 \begin{figure}[!ht]
  	\centering
