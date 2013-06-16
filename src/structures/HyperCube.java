@@ -16,8 +16,8 @@ public class HyperCube
 
 	public HyperCube(String hypercube_key, double[] upper_bounds)
 	{
-		this.hyperCubeKey = hypercube_key;
-		this.upperBounds = upper_bounds;
+		hyperCubeKey = hypercube_key;
+		upperBounds = upper_bounds;
 		entitiesSum = new double[upper_bounds.length];
 		dimension = upper_bounds.length;
 	}

@@ -63,7 +63,7 @@ public class HyperSpace
 
 	private String getCubeKey(double[] cube_bounds)
 	{
-		StringBuilder key = new StringBuilder();
+		final StringBuilder key = new StringBuilder();
 		final DecimalFormat format = new DecimalFormat("0.#");
 		for (final double cube_bound : cube_bounds)
 		{

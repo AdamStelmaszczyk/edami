@@ -31,18 +31,20 @@ public class Denclue extends ClusteringAlgorithm
 		final Clusters clusters = new Clusters();
 		unvisited.addAll(input);
 
-
 		// System.out.println("Get populated cubes");
 		detPopulatedCubes();
 
-		// System.out.println("Get hightly populated cubes and create their connection map");
+		// System.out.println("Get highly populated cubes and create their connection map");
 		hyperspace.connectMap();
 
-		// System.out.println("Find denstity attractors");
+		// System.out.println("Find density attractors");
 		detDensAttractors();
 
-		// System.out.println("Find pathes between attractors");
-		while(mergeClusters());
+		// System.out.println("Find paths between attractors");
+		while (mergeClusters())
+		{
+			;
+		}
 
 		for (final Point point : attractorsWithPoints.keySet())
 		{
@@ -199,8 +201,8 @@ public class Denclue extends ClusteringAlgorithm
 			// Calculate next candidate to attractor
 			final double grad_entity_norm = grad_point.getEuclideanNorm();
 
-			//if( grad_entity_norm < 0 )
-			//System.out.println("\n\n\n>>>>>\n\n\n");
+			// if( grad_entity_norm < 0 )
+			// System.out.println("\n\n\n>>>>>\n\n\n");
 
 			curr_attractor = last_attractor;
 			for (int i = 0; i < curr_gradient.length; i++)
@@ -228,7 +230,7 @@ public class Denclue extends ClusteringAlgorithm
 			found_attractor = curr_attractor;
 		}
 
-		//System.out.println(MAX_ITERATIONS +"\t"+ Arrays.toString(found_attractor.params));
+		// System.out.println(MAX_ITERATIONS +"\t"+ Arrays.toString(found_attractor.params));
 		return found_attractor;
 
 	}
@@ -251,7 +253,9 @@ public class Denclue extends ClusteringAlgorithm
 			for (final Point dependent_point2 : points2)
 			{
 				if (dependent_point1.distanceTo(dependent_point2) <= SIGMA)
+				{
 					return true;
+				}
 			}
 		}
 

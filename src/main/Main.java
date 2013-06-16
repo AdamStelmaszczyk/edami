@@ -14,18 +14,6 @@ public class Main
 {
 	public static void main(String[] args) throws IOException
 	{
-		double eps = 0.9;
-		int minPts = 5;
-
-		if (args.length > 0)
-		{
-			eps = Double.parseDouble(args[0]);
-		}
-		if (args.length > 1)
-		{
-			minPts = Integer.parseInt(args[1]);
-		}
-
 		final Points input = PointsReader.getPoints(System.in);
 
 		System.out.println("Standard deviations of parameters:");
@@ -37,25 +25,21 @@ public class Main
 
 		Visualizer.showClusters("Perfect clustering", input.getPerfectClusters());
 
-		
+		testAlgorithm(input, new Dbscan(input));
 		testAlgorithm(input, new Denclue(input));
-		testAlgorithm(input, new Dbscan(input, eps, minPts));
 	}
 
 	private static void testAlgorithm(Points input, ClusteringAlgorithm algorithm)
 	{
-		//"start" time and memory measuring
-		long startTime = System.currentTimeMillis();
-		long startFreeMemory = Runtime.getRuntime().freeMemory();
+		final long startTime = System.currentTimeMillis();
+		final long startFreeMemory = Runtime.getRuntime().freeMemory();
 
 		final Clusters clusters = algorithm.getClusters();
-		
-		//"stop" time and memory measuring
-		long stopFreeMemory = Runtime.getRuntime().freeMemory();
-		long stopTime = System.currentTimeMillis();
-		long elapsedTime = stopTime - startTime;
-		long usedMemory = startFreeMemory - stopFreeMemory;
 
+		final long stopFreeMemory = Runtime.getRuntime().freeMemory();
+		final long stopTime = System.currentTimeMillis();
+		final long elapsedTime = stopTime - startTime;
+		final long usedMemory = startFreeMemory - stopFreeMemory;
 
 		final Scorer scorer = new Scorer(input, clusters);
 
@@ -67,5 +51,4 @@ public class Main
 
 		Visualizer.showClusters(algorithm.toString(), clusters);
 	}
-
 }

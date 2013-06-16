@@ -10,16 +10,14 @@ import structures.Points;
 
 public class Dbscan extends ClusteringAlgorithm
 {
-	private final double EPS;
-	private final int MIN_PTS;
+	private final double EPS = 0.9;
+	private final int MIN_PTS = 5;
 	private final Set<Point> unvisited = Collections.newSetFromMap(new ConcurrentHashMap<Point, Boolean>());
 	private final Set<Point> clustered = Collections.newSetFromMap(new ConcurrentHashMap<Point, Boolean>());
 
-	public Dbscan(Points input, double eps, int minPts)
+	public Dbscan(Points input)
 	{
 		super(input);
-		EPS = eps;
-		MIN_PTS = minPts;
 	}
 
 	@Override

@@ -247,7 +247,6 @@ $$SIGMA = 0.7, EPS = 2$$
 and for DBSCAN algorithm:
 $$EPS = 0.9, MIN\_PT = 5$$
 
-
 The comparison based on time of DENCLUE and DBSCAN algorithms is presented on figure~\ref{comparison_time}. It's hard to compare algorithms based on the memory they used, because of the Java automatic garbage collection, which programmer cannot control. The attempts to calculate free memory before and after the algorithm execution was not successful: sometimes there were zero difference in the amount of free memory. 
 
 \begin{figure}[!ht]
@@ -258,7 +257,14 @@ The comparison based on time of DENCLUE and DBSCAN algorithms is presented on fi
 		\label{comparison_time}
 \end{figure}
 
-What can be seen from achieved by DBSCAN and DENCLUE algorithms results that they are quit different. Rand index for DENCLUE algorithm always was higher, what means that its results for this dataset are better. But on the other hand DENCLUE  algorithm was needed  more time than DBSCAN to do the same work. Should be noticed, that chosen dataset wasn't very big and this difference in time could be changed when algorithms would try to deal with really huge datasets. It can be assumed at the first sight, that for bigger dataset DENCLUE algorithm will be much more slower then DBSCAN, but it's not completely true. Time for DBSCAN algorithm in such situation will rise very quickly and on the other hand such elements in DENCLUE algorithm as dividing data points to cubes, take for big calculations only highly populated cubes ant other elements that were provided to faster the algorithm, will optimize it. And on the tested dataset DENCLUE algorithm dividing cubes for populated and highly populated wasn't a cause of some big decrease of considered cubes. 
+What can be seen from achieved by DBSCAN and DENCLUE algorithms results that they are quit different. 
+Rand index for DENCLUE algorithm always was higher, what means that its results for this dataset are better. 
+But on the other hand DENCLUE  algorithm was needed  more time than DBSCAN to do the same work. 
+Should be noticed, that chosen dataset wasn't very big and this difference in time could be changed when 
+algorithms would try to deal with really huge datasets. It can be assumed at the first sight, that for bigger 
+dataset DENCLUE algorithm will be much more slower then DBSCAN, but it's not completely true. 
+Time for DBSCAN algorithm in such situation will rise very quickly and on the other hand such elements in 
+DENCLUE algorithm as dividing data points to cubes, take for big calculations only highly populated cubes ant other elements that were provided to faster the algorithm, will optimize it. And on the tested dataset DENCLUE algorithm dividing cubes for populated and highly populated wasn't a cause of some big decrease of considered cubes. 
 
 \cleardoublepage
 
