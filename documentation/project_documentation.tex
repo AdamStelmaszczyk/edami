@@ -5,7 +5,6 @@
 \usepackage{hyperref}
 \usepackage{enumerate}
 \usepackage{setspace}
-%\singlespacing
 
 \makeatletter
 
@@ -53,10 +52,8 @@
 
     \end{minipage}
 
-    \vspace{4cm}
-    
+    \vspace{4cm} 
  
-
      \end{flushright}
 
     \vspace*{\stretch{6}}
@@ -79,65 +76,64 @@
 \begin{document}
 
 \maketitle
+\tableofcontents
 
+\newpage
 
-\onehalfspacing
+\section{Project task}
+Implementation and experimental evaluation of DBSCAN~\cite{dbscan} and DENCLUE~\cite{denclue} clustering algorithms. 
 
+\section{Data set}
 
-\section*{Project task}
-Implementation and experimental evaluation of DBSCAN~\cite{dbscan} and DENCLUE~\cite{denclue} algorithms. 
+For the experiments a data set with geometrical properties of wheat kernels was chosen,
+from the \textit{UCI Irvine Machine Learning Repository}~\cite{dataset}.
+Kernels belong to 3 different varieties of wheat: Kama, Rosa and Canadian.
+Data set consists of 210 elements, 70 per variety. 
 
-%\section*{Solution specification}
+\subsection{Data set attributes information}
 
-\section*{Data set}
+Each element consists of 7 real-valued attributes, which are geometric parameters of wheat kernels, 
+that were measured using the X-rays: 
 
-For the experiments was chosen dataset with information about geometrical properties of kernels belonging to three different varieties of wheat: Kama, Rosa and Canadian (70 elements each, randomly selected). This dataset was found at the page of \textit{UC Irvine Machine Learning Repository}~\cite{dataset}. This set has seven, real-valued attributes, and includes 210 instances. \footnote{\url{http://archive.ics.uci.edu/ml/machine-learning-databases/00236/seeds_dataset.txt}}
-
-\subsection*{Data set attribute information}
-
-
-To construct the data, seven geometric parameters of wheat kernels were measured: 
-
-\begin{itemize}
-	\item area A, 
-	\item perimeter P, 
-	\item compactness C, 
+\begin{enumerate}
+	\item area $A$, 
+	\item perimeter $P$, 
+	\item compactness $C = \frac{4 \pi A}{P^2}$, 
 	\item length of kernel, 
 	\item width of kernel, 
 	\item asymmetry coefficient 
 	\item length of kernel groove. 
-\end{itemize}
+\end{enumerate}
 
-All of these parameters were real-valued continuous.
-
-
-\section*{Algorithms description}
+\section{Descriptions of used algorithms}
  
-\subsection*{DBSCAN algorithm}
+Two popular clustering algorithms were used, DBSCAN ~\cite{dbscan} and DENCLUE ~\cite{denclue}. 
+In this section brief descriptions of both methods are presented.
 
-DBSCAN algorithm is relatively simple algorithm controlled with 2 parameters, namely EPS and MIN\_PTS. \cite{dbscan}
+\subsection{DBSCAN algorithm}
+
+DBSCAN algorithm is relatively simple algorithm controlled with 2 parameters, namely \texttt{EPS} and \texttt{MIN\_PTS}. \cite{dbscan}
 Basically, we are iterating over a set of unvisited points. If we found a core point (a point which has
-at least MIN\_PTS in his Eps-neighbourhood), we are starting a new cluster. Looking at the neighbours 
-of found core point we are trying to expand this new cluster as much as possible (basing on the Eps-neighbourhood).
+at least \texttt{MIN\_PTS} in its Eps-neighbourhood), we are starting a new cluster. Looking at the neighbours 
+of found core point we are trying to expand this new cluster as much as possible (in respect to the Eps-neighbourhood).
 
-
-
-\subsection*{DENCLUE algorithm}
+\subsection{DENCLUE algorithm}
 
 DENCLUE algorithm is based on the idea that the influence of each data point can be modeled using a mathematical function (influence function). The overall density of the data space can be calculated as the sum of the influence function of all data points. Clusters can be determined mathematically by identifying density-attractors, which are the local maxima of the overall density function. The DENCLUE algorithm works in two steps:
 
 \begin{enumerate}
-	\item It is preclustering step, in which a map of the relevant portion of the data space is constructed. The map is used to speed up the calculation of the density function which requires to efficiently access neighboring portions of the data space. 
+	\item Preclustering step, in which a map of the relevant portion of the data space is constructed. The map is used to speed up the calculation of the density function which requires to efficiently access neighboring portions of the data space. 
 	
-	\item It is the actual clustering step, in which the algorithm identifies the density-attractors and the corresponding density-attracted points.
+	\item Actual clustering step, in which the algorithm identifies the density-attractors and the corresponding density-attracted points.
 \end{enumerate}
 
-\section*{Implementation details}
+\section{Implementation details}
 
-As implementation language for the project Java was chosen. 
-Data set is read from a text file, that located in program root directory, and a set of objects that represent points is generated. 
-On this set DBSCAN and DENCLUE algorithms are run. 
-Other arguments that algorithms need are declared directly in the program files. Whole program consists of five packages:
+As implementation language for the project Java was chosen.
+Data set is read from a \texttt{seeds\_dataset.txt} text file and passed to a standard input of our bechmarking program.
+In the benchmark, set of objects that represent points is created. 
+DBSCAN and DENCLUE algorithms are using that set.
+Other arguments that algorithms need are hard-coded. Whole program consists of five packages:
 
 \begin{itemize}
 	\item \texttt{algorithms} In this package abstract class ClusteringAlgorithm and inherited from it classes DBSCAN and DENCLUE are located. 
@@ -150,8 +146,7 @@ Other arguments that algorithms need are declared directly in the program files.
 \label{algorithms}
 	\end{figure}
 
-
-	\item \texttt{structures} Here are located classes Cluster, Point and Points, that used simply to describe set of points and generated clusters. Diagram class is shown on the picture~\ref{structures}.
+	\item \texttt{structures} Here are located basic structure classes like Cluster, Point and Points. Diagram class is shown on the picture~\ref{structures}.
 
 	\begin{figure}[!ht]
  	\centering
@@ -161,8 +156,7 @@ Other arguments that algorithms need are declared directly in the program files.
 \label{structures}
 	\end{figure}
 
-
-	\item \texttt{scorer} This package consists of a class Scorer, that used to generate some statistics about created by algorithm clusters. Diagram class is shown on the picture~\ref{scorer}.
+	\item \texttt{scorer} This package consists of a Scorer class, which used to calculate clustering quality measure. Diagram class is shown on the picture~\ref{scorer}.
 
 	\begin{figure}[!ht]
  	\centering
@@ -171,7 +165,6 @@ Other arguments that algorithms need are declared directly in the program files.
 	{Class diagram for scorer package}
 	\label{scorer}
 	\end{figure}
-
 
 	\item \texttt{visualizer} Used for the clusters visualization. Diagram class is shown on the picture~\ref{visualizer}.
 
@@ -183,9 +176,7 @@ Other arguments that algorithms need are declared directly in the program files.
 \label{visualizer}
 	\end{figure}
 
-
-	\item \texttt{main} Used for reading the data set from the file and executing algorithms. Diagram class is shown on the picture~\ref{main}.
-
+	\item \texttt{main} Used for reading the data set from the file and bechmarking algorithms. Diagram class is shown on the picture~\ref{main}.
 
 	\begin{figure}[!ht]
  	\centering
@@ -197,35 +188,24 @@ Other arguments that algorithms need are declared directly in the program files.
 
 \end{itemize}
 
+\section{User guide}
 
+To run benchmark program please follow this 3 steps:
 
-\section*{User guide}
-
-
-Execute files from edami\_clustering.zip.
-
-
-\noindent 
-Create an empty java project in Eclipse IDE and import extracted files to it. 
-
-\noindent 
-Build the project using Eclipse.
-
-\noindent 
-To run the program please add execution rights to the run.sh file by typing in console: 
-	chmod + ./run.sh 
-
-
-\noindent 
-Run program:
- ./run.sh
-
+\begin{enumerate}
+\item Add execution rights to 2 scripts with a command \texttt{chmod +x build.sh; chmod +x run.sh}.
+\item Compile Java source code running \texttt{./build.sh}. \texttt{bin} catalog should appear.
+\item Run benchmark program with \texttt{./run.sh}.
+\end{enumerate}
 
 \cleardoublepage
 
-\section*{Experimentation results and analysis}
+\section{Experimentation results and analysis}
 
-As a result of execution DBSCAN and DENCLUE algorythms two sets of clusters are generated. This clusters are represented as points in 2D view as a set of points that belong to them (pictures~\ref{perfect}, ~\ref{dbscan}, ~\ref{denclue}). Each point represented as a number of it’s cluster. Data set attributes~\textit{area} and~\textit{asymmetry coefficient} are chosen as a dimensions of the view because of their standard deviation. 
+As a result of execution DBSCAN and DENCLUE algorithms two sets of clusters are generated. 
+This clusters are represented in 2D view as a set of points, drawn as numbers (fig.~\ref{perfect}, ~\ref{dbscan}, ~\ref{denclue}). 
+Each number is representing cluster ID. ~\textit{Area} and~\textit{asymmetry coefficient} are on axes,
+because this attributes have the greatest standard deviations (fig.~\ref{result}).
 
 \begin{figure}[!ht]
  	\centering
@@ -251,7 +231,7 @@ As a result of execution DBSCAN and DENCLUE algorythms two sets of clusters are 
 		\label{denclue}
 	\end{figure}
 
-Also some statistics for the running algorithms are shown, such as \textit{true positives}, \textit{true negatives} and \textit{rand index} (picture~\ref{result}).
+Also some statistics for the running algorithms are shown, such as number of \textit{true positives}, \textit{true negatives} and \textit{Rand index} (picture~\ref{result}).
 
 \begin{figure}[!ht]
  	\centering
@@ -280,17 +260,10 @@ The comparison based on time of DENCLUE and DBSCAN algorithms is presented on fi
 
 What can be seen from achieved by DBSCAN and DENCLUE algorithms results that they are quit different. Rand index for DENCLUE algorithm always was higher, what means that its results for this dataset are better. But on the other hand DENCLUE  algorithm was needed  more time than DBSCAN to do the same work. Should be noticed, that chosen dataset wasn't very big and this difference in time could be changed when algorithms would try to deal with really huge datasets. It can be assumed at the first sight, that for bigger dataset DENCLUE algorithm will be much more slower then DBSCAN, but it's not completely true. Time for DBSCAN algorithm in such situation will rise very quickly and on the other hand such elements in DENCLUE algorithm as dividing data points to cubes, take for big calculations only highly populated cubes ant other elements that were provided to faster the algorithm, will optimize it. And on the tested dataset DENCLUE algorithm dividing cubes for populated and highly populated wasn't a cause of some big decrease of considered cubes. 
 
-
 \cleardoublepage
 
+\section{Conclusions}
 
-\section*{Conclusion}
-
-
-
-
-
-%\url{http://archive.ics.uci.edu/ml/machine-learning-databases/00236/} 
 \newpage
 
 \bibliographystyle{plain}
