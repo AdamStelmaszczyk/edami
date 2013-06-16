@@ -175,7 +175,7 @@ public class Denclue extends ClusteringAlgorithm
 	{
 		final double delta = 1;
 
-		Point curr_attractor = point;
+		Point curr_attractor = new Point(point.params, point.clusterId);
 		Point found_attractor = null;
 
 		int MAX_ITERATIONS = 5;
