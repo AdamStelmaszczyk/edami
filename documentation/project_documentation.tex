@@ -270,9 +270,9 @@ algorithms would try to deal with bigger data sets.
 One could come with a conclustion, that for a bigger data set DENCLUE algorithm will be much more slower 
 than DBSCAN, but it's not completely true. 
 Time for DBSCAN algorithm in such situation will rise quickly. 
-DENCLUE algorithm as dividing data points to cubes, take for big calculations only highly populated cubes ant other 
+DENCLUE algorithm as dividing data points to cubes, take for big calculations only highly populated cubes and other 
 elements that were provided to faster the algorithm, will optimize it. 
-And on the tested data set DENCLUE algorithm dividing cubes for populated and 
+On the tested data set DENCLUE algorithm dividing cubes for populated and 
 highly populated wasn't a cause of some big decrease of considered cubes. 
 There is also possible optimization for a DBSCAN algorithm, using triangle inequality (TI) property. \cite{mkr}
 It could be a vast improvement, because now to calculate a neighbourhood all the points distances are calculated and checked.
