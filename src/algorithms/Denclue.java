@@ -64,7 +64,7 @@ public class Denclue extends ClusteringAlgorithm
 				}
 				final Points points1 = attractorsWithPoints.get(p1);
 				final Points points2 = attractorsWithPoints.get(p2);
-				if (pathBetweenExists(p1, points1, p2, points2))
+				if (pathExists(p1, points1, p2, points2))
 				{
 					final Points union = new Points();
 					final Point unionPoint = p1;
@@ -99,8 +99,8 @@ public class Denclue extends ClusteringAlgorithm
 		}
 	}
 
-	/** Calculate the influence of an entity in another. I(x,y) = exp { - [distance(x,y)**2] / [2*(sigma**2)] } */
-	private double calculateInfluence(Point point1, Point point2)
+	/** Calculate the influence: I(x,y) = exp { - [distance(x,y)^2] / [2*(sigma^2)] } */
+	private double calcInfluence(Point point1, Point point2)
 	{
 		final double distance = point1.distanceTo(point2);
 
@@ -115,7 +115,7 @@ public class Denclue extends ClusteringAlgorithm
 		return influence;
 	}
 
-	/** Calculate the density in an entity. It's defined as the sum of the influence of each another entity of data set. */
+	/** Calculate the density in a point (sum of the influence of each another entity of data set). */
 	private double calculateDensity(Point point)
 	{
 		double density = 0.0;
@@ -123,13 +123,13 @@ public class Denclue extends ClusteringAlgorithm
 		{
 			for (final Point p : cube.points)
 			{
-				density += calculateInfluence(point, p);
+				density += calcInfluence(point, p);
 			}
 		}
 		return density;
 	}
 
-	/** Calculate gradient of density functions in a given spatial point. */
+	/** Calculate gradient of density functions */
 	private double[] calculateGradient(Point point)
 	{
 		final double[] gradient = new double[point.params.length];
@@ -139,7 +139,7 @@ public class Denclue extends ClusteringAlgorithm
 		{
 			for (final Point otherPoint : cube.points)
 			{
-				final double influence = calculateInfluence(point, otherPoint);
+				final double influence = calcInfluence(point, otherPoint);
 
 				// Calculate the gradient function for each dimension of data
 				for (int i = 0; i < point.params.length; i++)
@@ -156,68 +156,64 @@ public class Denclue extends ClusteringAlgorithm
 	/** Find density-attractor for an entity (a hill climbing algorithm). */
 	private Point getDensityAttractor(Point point)
 	{
+		int maxIter = 5;
 		final double delta = 1;
-
 		Point currentAttractor = new Point(point.params, point.clusterId);
-		Point foundAttractor = null;
-
-		int MAX_ITERATIONS = 5;
-		Boolean reachedTop = false;
+		Point resultAttractor = null;
+		Boolean isTop = false;
 
 		do
 		{
-			// Avoid infinite loops
-			if (--MAX_ITERATIONS <= 0)
+			// avoid loops
+			if (--maxIter <= 0)
 			{
 				break;
 			}
 
-			// Store last calculated values for further comparison
-			final Point lastAttractor = currentAttractor;
+			final Point prevAttractor = currentAttractor;
 
-			// Calculate the gradient of density function at current candidate to attractor
-			final double[] currentGradient = calculateGradient(lastAttractor);
+			final double[] currentGradient = calculateGradient(prevAttractor);
 
-			// Build an entity to represent the gradient
-			final Point gradientPoint = new Point(currentGradient, 0);
+			//Create point to represent gradient of current attractor
+			final Point gradPoint = new Point(currentGradient, 0);
 
-			// Calculate next candidate to attractor
-			final double gradientEntityNorm = gradientPoint.getEuclideanNorm();
+			//Get next possible attractor
+			final double gradientEntityNorm = gradPoint.getEuclideanNorm();
 
-			currentAttractor = lastAttractor;
+			currentAttractor = prevAttractor;
 			for (int i = 0; i < currentGradient.length; i++)
 			{
-				currentAttractor.params[i] += delta / gradientEntityNorm * gradientPoint.params[i];
+				currentAttractor.params[i] += delta / gradientEntityNorm * gradPoint.params[i];
 			}
 
-			// Calculate density in current attractor
+			// Calculate density
 			currentAttractor.density = calculateDensity(currentAttractor);
 
-			// Verify whether local maxima was found
-			reachedTop = currentAttractor.density < lastAttractor.density;
-			if (reachedTop)
+			// Break if the local maximum found
+			isTop = currentAttractor.density < prevAttractor.density;
+			if (isTop)
 			{
-				foundAttractor = lastAttractor;
+				resultAttractor = prevAttractor;
 			}
 		}
-		while (!reachedTop);
+		while (!isTop);
 
-		if (MAX_ITERATIONS <= 0)
+		if (maxIter <= 0)
 		{
-			foundAttractor = currentAttractor;
+			resultAttractor = currentAttractor;
 		}
 
-		return foundAttractor;
+		return resultAttractor;
 	}
 
 	/** Find path between two attractors. */
-	private Boolean pathBetweenExists(Point point1, Points points1, Point point2, Points points2)
+	private Boolean pathExists(Point point1, Points points1, Point point2, Points points2)
 	{
-		// If the distance between points <= SIGMA, a path exist
 		if (point1.distanceTo(point2) <= SIGMA)
 		{
 			return true;
 		}
+		
 		for (final Point dependentPoint1 : points1)
 		{
 			for (final Point dependentPoint2 : points2)
