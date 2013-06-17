@@ -1,5 +1,11 @@
 \begin{thebibliography}{1}
 
+\bibitem{rand}
+{Evaluation of clustering}.
+\newblock
+  \url{http://nlp.stanford.edu/IR-book/html/htmledition/evaluation-of-clusteri%
+ng-1.html}.
+
 \bibitem{dataset}
 {UC Irvine Machine Learning Repository}.
 \newblock \url{http://archive.ics.uci.edu/ml/datasets/seeds}.
@@ -16,5 +22,11 @@ Alexander Hinneburg and Daniel~A. Keimm.
 \newblock An efficient approach to clustering in large multimedia databases
   with noise.
 \newblock 1998.
+
+\bibitem{mkr}
+Marzena Kryszkiewicz and Piotr Lasek.
+\newblock Ti-dbscan: Clustering with dbscan by means of the triangle
+  inequality.
+\newblock 2010.
 
 \end{thebibliography}

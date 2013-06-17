@@ -231,7 +231,8 @@ because this attributes have the greatest standard deviations (fig.~\ref{result}
 		\label{denclue}
 	\end{figure}
 
-Also some statistics for the running algorithms are shown, such as number of \textit{true positives}, \textit{true negatives} and \textit{Rand index} (picture~\ref{result}) \cite{rand}.
+Also some statistics for the running algorithms are shown, such as number of \textit{true positives}, 
+\textit{true negatives} and \textit{Rand index} \cite{rand} (picture~\ref{result}).
 
 \begin{figure}[!ht]
  	\centering
@@ -277,6 +278,13 @@ There is also possible optimization for a DBSCAN algorithm, using triangle inequ
 It could be a vast improvement, because now to calculate a neighbourhood all the points distances are calculated and checked.
 With triangle inequality most of the points would be skipped. However, even without this optimization DBSCAN was faster
 than DENCLUE, but less accurate, according to our quality measure.
+
+\section{Attribution}
+
+Aleksandra Kurdo implemented DENCLUE algorithm, structures essential for it, 
+tested memory and time usage and prepared majority of this documenation.
+Adam Stelmaszczyk implemented \texttt{scorer}, \texttt{visualizer}, \texttt{main} packages, 
+DENCLUE algorithm, structures used in it and wrote part of this documenation.
 
 \newpage
 
