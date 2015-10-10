@@ -7,7 +7,7 @@ The Faculty of Electronics and Information Technology
 
 ## Goal
 
-Implementation and experimental evaluation of DBSCAN and DENCLUE clustering algorithms. 
+Implementation and experimental evaluation of [DBSCAN](http://www.dbs.ifi.lmu.de/Publikationen/Papers/KDD-96.final.frame.pdf) and [DENCLUE](http://bib.dbvis.de/uploadedFiles/176.pdf) clustering algorithms. 
 
 ## Data set
 
