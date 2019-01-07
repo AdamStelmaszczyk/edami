@@ -1,11 +1,5 @@
 \begin{thebibliography}{1}
 
-\bibitem{rand}
-{Evaluation of clustering}.
-\newblock
-  \url{http://nlp.stanford.edu/IR-book/html/htmledition/evaluation-of-clusteri%
-ng-1.html}.
-
 \bibitem{dataset}
 {UC Irvine Machine Learning Repository}.
 \newblock \url{http://archive.ics.uci.edu/ml/datasets/seeds}.

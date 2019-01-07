@@ -1,0 +1,54 @@
+This is BibTeX, Version 0.99d (TeX Live 2015/Debian)
+Capacity: max_strings=35307, hash_size=35307, hash_prime=30011
+The top-level auxiliary file: project_documentation.aux
+The style file: plain.bst
+Database file #1: references.bib
+Warning--entry type for "dataset" isn't style-file defined
+--line 1 of file references.bib
+Warning--I didn't find a database entry for "rand"
+Warning--to sort, need author or key in dataset
+Warning--there's a number but no volume in dbscan
+Warning--empty journal in denclue
+Warning--empty journal in mkr
+You've used 4 entries,
+            2118 wiz_defined-function locations,
+            515 strings with 4623 characters,
+and the built_in function-call counts, 974 in all, are:
+= -- 87
+> -- 50
+< -- 0
++ -- 22
+- -- 16
+* -- 57
+:= -- 172
+add.period$ -- 11
+call.type$ -- 4
+change.case$ -- 20
+chr.to.int$ -- 0
+cite$ -- 8
+duplicate$ -- 37
+empty$ -- 76
+format.name$ -- 16
+if$ -- 195
+int.to.chr$ -- 0
+int.to.str$ -- 4
+missing$ -- 3
+newline$ -- 22
+num.names$ -- 6
+pop$ -- 28
+preamble$ -- 1
+purify$ -- 16
+quote$ -- 0
+skip$ -- 30
+stack$ -- 0
+substring$ -- 22
+swap$ -- 2
+text.length$ -- 0
+text.prefix$ -- 0
+top$ -- 0
+type$ -- 16
+warning$ -- 4
+while$ -- 6
+width$ -- 5
+write$ -- 38
+(There were 6 warnings)

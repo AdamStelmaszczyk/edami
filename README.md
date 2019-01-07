@@ -1,6 +1,6 @@
 # Clustering based on density ([PDF](https://github.com/AdamStelmaszczyk/edami/blob/master/documentation/project_documentation.pdf))
 
-Aleksandra Kurdo, Adam Stelmaszczyk
+Adam Stelmaszczyk, Anonymous Coauthor
 
 Warsaw University of Technology  
 The Faculty of Electronics and Information Technology  
