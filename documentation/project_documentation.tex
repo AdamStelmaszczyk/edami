@@ -232,7 +232,7 @@ because this attributes have the greatest standard deviations (fig.~\ref{result}
 	\end{figure}
 
 Also some statistics for the running algorithms are shown, such as number of \textit{true positives}, 
-\textit{true negatives} and \textit{Rand index} \cite{rand} (picture~\ref{result}).
+\textit{true negatives} and \textit{Rand index} (picture~\ref{result}).
 
 \begin{figure}[!ht]
  	\centering
@@ -263,17 +263,16 @@ Comparison of algorithms running times is presented on figure~\ref{comparison_ti
 \end{figure}
 
 Both algorithms gave different clusterization.
-Quality measure (Rand index \cite{rand}) was always higher for DENCLUE algorithm.
+Quality measure (Rand index) was always higher for DENCLUE algorithm.
 On the other hand, this algorithm needed more time than DBSCAN to do the same work. 
 It should be noticed, that the chosen data set wasn't very big and this difference in time could be different if 
 algorithms would try to deal with bigger data sets. 
 One could come with a conclustion, that for a bigger data set DENCLUE algorithm will be much more slower 
 than DBSCAN, but it's not completely true. 
 Time for DBSCAN algorithm in such situation will rise quickly. 
-DENCLUE algorithm as dividing data points to cubes, take for big calculations only highly populated cubes and other 
-elements that were provided to faster the algorithm, will optimize it. 
+DENCLUE algorithm is dividing data points to cubes, taking for big calculations only highly populated cubes and other elements of the algorithm will make it faster.
 On the tested data set DENCLUE algorithm dividing cubes for populated and 
-highly populated wasn't a cause of some big decrease of considered cubes. 
+highly populated wasn't a cause of big decrease of considered cubes.
 There is also possible optimization for a DBSCAN algorithm, using triangle inequality (TI) property. \cite{mkr}
 It could be a vast improvement, because now to calculate a neighbourhood all the points distances are calculated and checked.
 With triangle inequality most of the points would be skipped. However, even without this optimization DBSCAN was faster
@@ -284,7 +283,7 @@ than DENCLUE, but less accurate, according to our quality measure.
 Anonymous Coauthor implemented DENCLUE algorithm, structures essential for it, 
 tested memory and time usage and prepared majority of this documenation.
 Adam Stelmaszczyk implemented \texttt{scorer}, \texttt{visualizer}, \texttt{main} packages, 
-DENCLUE algorithm, structures used in it and wrote part of this documenation.
+DBSCAN algorithm, structures used in it and wrote part of this documenation.
 
 \newpage
 
